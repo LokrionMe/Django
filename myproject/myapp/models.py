@@ -13,6 +13,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     count = models.IntegerField()
     date = models.DateField(auto_now_add=True)
+    image = models.ImageField()
 
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)

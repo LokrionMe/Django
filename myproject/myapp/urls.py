@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from . import views
 urlpatterns = [
@@ -13,3 +15,6 @@ urlpatterns = [
     path('all_orders/', views.all_orders, name='all orders'),
     path("delete_order/<int:id>/", views.delete_order, name='delete order'),
 ]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

@@ -9,6 +9,7 @@
             <th>Имя</th>
             <th>Цена</th>
             <th>Кол-во</th>
+            <th>Изо-ие</th>
             <th></th>
         </thead>
         {% for product in products %}
@@ -17,6 +18,7 @@
             <td>{{ product.name }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.count }}</td>
+            <td><img src='{{ product.image.url }}' ></td>
             <td><a href="/delete_product/{{product.id}}">Удалить</a></td>
         </tr>
         {% endfor %}

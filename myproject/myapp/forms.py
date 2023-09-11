@@ -10,8 +10,8 @@ class UserForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ["name", "description", "price", "count",]
-        labels = {"name": "name", "description": "description","price": "price","count": "count",}
+        fields = ["name", "description", "price", "count", "image"]
+        labels = {"name": "name", "description": "description","price": "price","count": "count","image":"image",}
 
 class OrderForm(forms.ModelForm):
     class Meta:

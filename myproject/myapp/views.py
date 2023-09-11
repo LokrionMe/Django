@@ -1,5 +1,6 @@
 import logging
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from .models import User, Product, Order
 from .forms import UserForm, ProductForm, OrderForm
@@ -43,8 +44,11 @@ def delete_user(request, id):
 
 def add_product(request):
     if request.method == "POST":
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
+            image = form.cleaned_data['image']
+            fs = FileSystemStorage()
+            fs.save(image.name, image)
             form.save()
     else:
         form = ProductForm()
