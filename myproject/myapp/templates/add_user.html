@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container"></div>
+<form method="POST">
+    <fieldset>
+        <legend>Регистрация</legend>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Зарегистрировать">
+    </fieldset>
+</form>
+</div>
+
+{% endblock %}

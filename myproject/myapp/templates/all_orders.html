@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <h2>Список заказов</h2>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Заказчик</th>
+            <th>Продукты</th>
+            <th>Цена</th>
+            <th></th>
+        </thead>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{% for product in order.products.all %}
+                {{ product.name }}
+                {% endfor %}
+            </td>
+            <td>{{ order.total_price }}</td>
+            <td><a href="/delete_order/{{order.id}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}
